@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.OrderHistoryMapper">
+
+    <select id="dataPage" resultType="com.gdupt.entity.OrderHistory">
+
+        select id,order_id,order_time,deliver_goods,status,customer_id
+        from order_history
+        where customer_id =#{id}
+    </select>
+</mapper>

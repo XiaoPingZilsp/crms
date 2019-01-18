@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.BasicDataMapper">
+    <select id="dataPage" resultType="com.gdupt.entity.BasicData">
+        <include refid="basicinfo"/>
+        <if test="search!=null">
+            WHERE name_value like '%${search}%' or name like '%${search}%'
+            or parent_name like '%${search}%' or parent_value like '%${search}%'
+        </if>
+    </select>
+
+    <select id="selectslist" resultType="com.gdupt.entity.BasicData">
+        <include refid="basicinfo"/> where parent_name='${selects}' ORDER BY name desc
+    </select>
+
+    <sql id="basicinfo" >
+        select id,name_value,name,parent_name,parent_value,creation_time from basic_data
+    </sql>
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.ServiceUserAllotMapper">
+
+    <insert id="addAllot" parameterType="com.gdupt.entity.ServiceUserAllot">
+        INSERT INTO service_user_allot(service_id, user_id, creation_id, service_handle, handle_id, handle_time, handle_result, satisfaction)
+        values(#{serviceId},#{userId},#{creationId},#{serviceHandle},#{handleId},#{handleTime},#{handleResult},#{satisfaction})
+    </insert>
+    <update id="addResult">
+        UPDATE service_user_allot SET handle_result=#{handleResult},satisfaction=#{satisfaction} WHERE service_id=#{serviceId}
+    </update>
+    <update id="addDeal">
+        UPDATE service_user_allot SET service_handle=#{serviceHandle},handle_time=#{handleTime} WHERE service_id=#{serviceId}
+    </update>
+    <update id="updateStatuss">
+        UPDATE service_management SET statuss=#{statuss} where id=#{id};
+    </update>
+
+    <select id="findServiceHandle" resultType="com.gdupt.entity.BasicData">
+        SELECT id,name FROM basic_data WHERE parent_name = "1013"
+    </select>
+    <select id="findAll" resultType="com.gdupt.entity.vo.ServiceDeal">
+        SELECT sm.id,service_no, service_type, outline, customer_name, customer_id, statuss, service_req, creation_name,sm.creation_time,service_id,user_id,cllot_time,service_handle,handle_id,handle_time,handle_result,satisfaction,name
+        FROM service_management sm ,service_user_allot sa,basic_data bd WHERE sa.service_id = sm.id  AND sa.handle_id=bd.id AND sm.statuss in ("已分配","处理不及格") AND name=#{name}
+    </select>
+    <select id="findSatisfaction" resultType="com.gdupt.entity.BasicData">
+        SELECT id,name FROM basic_data WHERE parent_name = "1005"
+    </select>
+    <select id="findFile" resultType="com.gdupt.entity.vo.ServiceDeal">
+        SELECT sm.id,service_no, service_type, outline, customer_name, customer_id, statuss, service_req, creation_name,sm.creation_time,service_id,user_id,cllot_time,service_handle,handle_id,handle_time,handle_result,satisfaction,name
+        FROM service_management sm ,service_user_allot sa,basic_data bd WHERE sa.service_id = sm.id  AND sa.handle_id=bd.id AND sm.statuss="已归档" AND customer_name like '%${customer}%' and outline like '%${outline}%' and  service_type like '%${serviceType}%'
+    </select>
+    <select id="findFeedBack" resultType="com.gdupt.entity.vo.ServiceDeal">
+        SELECT sm.id,service_no, service_type, outline, customer_name, customer_id, statuss, service_req, creation_name,sm.creation_time,service_id,user_id,cllot_time,service_handle,handle_id,handle_time,handle_result,satisfaction,name
+        FROM service_management sm ,service_user_allot sa,basic_data bd WHERE sa.service_id = sm.id  AND sa.handle_id=bd.id AND sm.statuss="已处理" AND name=#{name}
+    </select>
+</mapper>

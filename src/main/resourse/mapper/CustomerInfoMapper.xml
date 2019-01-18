@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.CustomerInfoMapper">
+    <select id="dataPage" resultType="com.gdupt.entity.CustomerInfo">
+        select * from customer_info
+    </select>
+
+    <select id="ConstituteAll" resultMap="constitu">
+        SELECT b.name_value as id,b.name as grade ,count(customer_grade) as num
+        FROM customer_info c,basic_data b where b.name=customer_grade group by customer_grade;
+    </select>
+
+    <select id="ContributionAll" resultType="com.gdupt.entity.vo.CoutContribution">
+        select c.customer_id as id ,c.customer_name,sum(money) as totalMoney from customer_info c
+        join order_history h on c.customer_id=h.customer_id
+        join order_info i on i.order_id=h.id
+        WHERE customer_name like '%${customerName}%'
+        <if test="year!=null">
+          <if test="year!=''">
+            and YEAR(h.order_time) = ${year}
+           </if>
+        </if>
+        group by(c.customer_id);
+    </select>
+
+
+    <resultMap id="constitu" type="com.gdupt.entity.vo.CoutConstitute" >
+        <id column="id" property="id"/>
+        <result column="grade" property="grade"/>
+        <result column="num" property="num"/>
+    </resultMap>
+</mapper>

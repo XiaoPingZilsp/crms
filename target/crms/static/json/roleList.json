@@ -1,0 +1,36 @@
+{
+	"code": 0,
+	"msg": "",
+	"count": 4,
+	"data": [
+		{
+			"roleId": "1",
+			"roleName": "张三",
+			"roleAuthor": "管理员",
+			"roleStatus": "0",
+			"roleTime": "2017-04-14 00:00:00"
+		},
+		{
+			"roleId": "2",
+			"roleName": "李思",
+			"roleAuthor": "管理员",
+			"roleStatus": "0",
+			"roleTime": "2017-04-14 00:00:00"
+		},
+		{
+			"roleId": "3",
+			"roleName": "司思",
+			"roleAuthor": "经理",
+			"roleStatus": "1",
+			"roleTime": "2017-04-14 00:00:00"
+		},
+		{
+			"roleId": "4",
+			"roleName": "张三",
+			"roleAuthor": "管理员",
+			"roleStatus": "0",
+			"roleTime": "2017-04-14 00:00:00"
+		}
+		
+	]
+}

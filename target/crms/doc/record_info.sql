@@ -1,0 +1,11 @@
+INSERT INTO `record_info` VALUES (1, '广', '概要0', '详情0', '备注0', '2018-11-8 00:56:37', 1);
+INSERT INTO `record_info` VALUES (2, '广州1', '概要1', '详情1', '备注1', '2018-11-8 00:56:37', 1);
+INSERT INTO `record_info` VALUES (9, '广州2dgdgdr', '概要2', '详情2', '备注2', '2018-11-8 00:56:37', 1);
+INSERT INTO `record_info` VALUES (10, '广州3', '概要3', '详情3', '备注3', '2018-11-8 00:56:37', 2);
+INSERT INTO `record_info` VALUES (11, '广州4', '概要4', '详情4', '备注4', '2018-11-8 00:56:37', 3);
+INSERT INTO `record_info` VALUES (12, '广州5', '概要5', '详情5', '备注5', '2018-11-8 00:56:37', 2);
+INSERT INTO `record_info` VALUES (16, 'hhu', 'hkhk', 'gjghjh', 'ukj', '2018-11-28 18:30:37', 2);
+INSERT INTO `record_info` VALUES (17, '1', 'k', '1', '1', '2018-11-28 18:31:10', 3);
+INSERT INTO `record_info` VALUES (18, '1', '1', '55', '5', '2018-11-28 18:39:13', 1);
+INSERT INTO `record_info` VALUES (19, 'htht4444', 'thth2444', 'fsdfsfsadsadas', 'thth444', '2018-11-28 23:52:27', 1);
+INSERT INTO `record_info` VALUES (22, '12', '12', '12', '2', '2018-11-29 00:06:18', 1);

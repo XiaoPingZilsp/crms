@@ -1,0 +1,130 @@
+[
+	{
+		"title": "销售管理",
+		"icon": "icon-text",
+		"href": "views/news/newsList.jsp",
+		"spread": false,
+		"children": [
+			{
+				"title": "销售机会管理",
+				"icon": "&#xe654;",
+				"href": "../views/sales/list.jsp",
+				"spread": false
+			},
+			{
+				"title": "客户开发计划",
+				"icon": "&#xe642;",
+				"href": "../views/sales/planList.jsp",
+				"spread": false
+			}
+		]
+	},
+	{
+		"title": "客户管理",
+		"icon": "icon-text",
+		"href": "views/customer/customerList.jsp",
+		"spread": false,
+		"children": [
+			{
+				"title": "客户信息管理",
+				"icon": "&#xe61c;",
+				"href": "customer/customerList.jsp",
+				"spread": false
+			},
+			{
+				"title": "客户流失管理",
+				"icon": "&#xe609;",
+				"href": "customer/coutLost.jsp",
+				"spread": false
+			}
+		]
+
+	},
+	{
+		"title": "服务管理",
+		"icon": "&#xe630;",
+		"href": "",
+		"spread": false,
+		"children": [
+			{
+				"title": "服务创建",
+				"icon": "&#xe61c;",
+				"href": "../views/service/add.jsp",
+				"spread": false
+			},
+			{
+				"title": "服务分配",
+				"icon": "&#xe609;",
+				"href": "../views/service/allot.jsp",
+				"spread": false
+			},
+			{
+				"title": "服务处理",
+				"icon": "&#xe609;",
+				"href": "../views/service/deal.jsp",
+				"spread": false
+			},
+			{
+				"title": "服务反馈",
+				"icon": "&#xe609;",
+				"href": "../views/service/feedback.jsp",
+				"spread": false
+			},
+			{
+				"title": "服务归档",
+				"icon": "&#xe609;",
+				"href": "../views/service/file.jsp",
+				"spread": false
+			}
+
+		]
+	},
+	{
+		"title": "统计报表",
+		"icon": "&#xe630;",
+		"href": "",
+		"spread": false,
+		"children": [
+			{
+				"title": "客户贡献分析",
+				"icon": "&#xe61c;",
+				"href": "cout/coutContribution.jsp",
+				"spread": false
+			},
+			{
+				"title": "客户构成分析",
+				"icon": "&#xe609;",
+				"href": "cout/coutConstitute.jsp",
+				"spread": false
+			},
+			{
+				"title": "客户服务分析",
+				"icon": "&#xe609;",
+				"href": "cout/coutService.jsp",
+				"spread": false
+			},
+			{
+				"title": "客户流失分析",
+				"icon": "&#xe609;",
+				"href": "cout/coutLost.jsp",
+				"spread": false
+			}
+		]
+	},
+	{
+		"title": "基础数据",
+		"icon": "&#xe630;",
+		"href": "",
+		"spread": false,
+		"children": [
+			{
+				"title": "数据字典管理",
+				"icon": "&#xe61c;",
+				"href": "basicData/dataDictionary.jsp",
+				"spread": false
+			}
+		]
+
+	}
+]
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.ServiceManagementMapper">
+    <insert id="addService" parameterType="com.gdupt.entity.ServiceManagement">
+        INSERT INTO service_management (service_no, service_type, outline, customer_name, customer_id, statuss, service_req, creation_id, creation_name)
+        VALUES (#{serviceNo},#{serviceType},#{outline},#{customerName},#{customerId},#{statuss},#{serviceReq},#{creationId},#{creationName})
+    </insert>
+    <update id="editService">
+        UPDATE service_management SET service_no=#{serviceNo},service_type=#{serviceType},outline=#{outline}, customer_name=#{customerName}, customer_id=#{customerId}, statuss=#{statuss}, service_req=#{serviceReq} where id=#{id}
+    </update>
+    <delete id="removeById">
+        DELETE FROM service_management WHERE id=#{id}
+    </delete>
+
+    <select id="findType" resultType="com.gdupt.entity.BasicData">
+        SELECT id,name FROM basic_data WHERE parent_name = "1009"
+    </select>
+
+    <select id="findStatuss" resultType="com.gdupt.entity.BasicData">
+        SELECT id,name FROM basic_data WHERE parent_name = "1010"
+    </select>
+
+    <select id="findCustomByName" resultType="com.gdupt.entity.CustomerInfo">
+        SELECT customer_id FROM customer_info where customer_name=#{customerName}
+    </select>
+
+    <select id="dataPage" resultType="com.gdupt.entity.ServiceManagement">
+        select id,service_no, service_type, outline, customer_name, customer_id, statuss, service_req, creation_id, creation_name,creation_time
+        from service_management WHERE statuss="新创建"
+        <if test="search!=null">
+            WHERE service_type like '%${search}%' or  outline like '%${search}%'
+            or customer_name like '%${search}%' or statuss like '%${search}%'
+        </if>
+    </select>
+
+    <select id="ServiceAll" resultMap="Service">
+        SELECT b.name_value as id,b.name as statuss ,count(service_type) as num
+        FROM service_management s,basic_data b where b.name=s.service_type group by service_type;
+    </select>
+    <select id="findCustomer" resultType="com.gdupt.entity.CustomerInfo">
+        SELECT customer_id,customer_name FROM customer_info
+    </select>
+
+
+    <resultMap id="Service" type="com.gdupt.entity.vo.CoutService" >
+        <id column="id" property="id"/>
+        <result column="statuss" property="statuss"/>
+        <result column="num" property="num"/>
+    </resultMap>
+
+    <select id="ServiceAge" resultMap="Service">
+        SELECT b.name_value as id,b.name as statuss ,count(service_type) as num
+        FROM service_management s,basic_data b where b.name=s.service_type
+        <if test="age!=null">
+            and YEAR(s.creation_time) = ${age}
+        </if>
+        group by service_type;
+    </select>
+
+</mapper>

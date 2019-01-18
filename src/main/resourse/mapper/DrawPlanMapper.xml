@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.DrawPlanMapper">
+    <select id="list" resultType="com.gdupt.entity.SalesOpportunity">
+        select * from sales_opportunity s
+        where  s.assign_name = '${username}'
+        and name like '%${name}%'  AND outline like '%${outline}%'
+        and contacts like '%${contacts}%'
+    </select>
+    <select id="selectItem" resultType="com.gdupt.entity.DrawPlan">
+        SELECT * FROM draw_plan WHERE opportunity_id = #{id}
+    </select>
+
+
+</mapper>

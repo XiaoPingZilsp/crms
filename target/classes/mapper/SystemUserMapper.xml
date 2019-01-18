@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.SystemUserMapper">
+    <update id="updatePsw">
+        UPDATE system_user SET log_pwd =#{logPwd} WHERE id =#{id}
+    </update>
+
+    <select id="check" resultType="com.gdupt.entity.SystemUser">
+         <include refid="allUser"></include>
+         WHERE log_name = #{logName};
+    </select>
+
+    <select id="selectInfo" resultType="com.gdupt.entity.SystemUser">
+        <include refid="allUser"></include> WHERE name=#{name}
+    </select>
+
+    <sql id="allUser">
+        SELECT id,name,log_name,log_pwd,role_id FROM system_user
+    </sql>
+
+</mapper>

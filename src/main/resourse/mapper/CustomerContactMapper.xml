@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.CustomerContactMapper">
+
+    <sql id="basicinfo" >
+        select *  from customer_contact
+    </sql>
+
+    <select id="selectByCid" resultType="com.gdupt.entity.CustomerContact">
+        <include refid="basicinfo"/> where customer_id = #{customerId}
+    </select>
+    <select id="selectslist" resultType="com.gdupt.entity.CustomerContact">
+        select name from customer_contact where customer_id= '${selects}'
+    </select>
+
+</mapper>

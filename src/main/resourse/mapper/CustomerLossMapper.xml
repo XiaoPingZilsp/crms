@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gdupt.mapper.CustomerLossMapper">
+    <insert id="saveLoss">
+        INSERT INTO customer_loss(customer_id,last_order_time)
+        value(#{customerId},#{lastOrderTime})
+    </insert>
+    <update id="updatecomfirm">
+        UPDATE customer_loss set loss_reason=#{lossReason},loss_time=#{lossTime},statuss=1 where id=#{id}
+    </update>
+
+    <update id="updatezanhuan">
+        UPDATE customer_loss set pause_way=#{pauseWay} where id=#{id}
+    </update>
+
+    <select id="findLastOrderTime" resultType="com.gdupt.entity.CustomerLoss">
+        select id,o.customer_id,customer_name,customer_mgr,max(order_time) lastOrderTime,min(DATEDIFF(CURDATE(),order_time)) timenum
+        from order_history o,customer_info c
+        where c.customer_id = o.customer_id
+        GROUP BY c.customer_id
+    </select>
+
+    <select id="findAllLoss" resultType="com.gdupt.entity.CustomerLoss">
+        select id,loss.customer_id,info.customer_mgr,info.customer_name,last_order_time,pause_way,add_pause_way,loss_reason,loss_time,statuss
+        from customer_loss loss,customer_info info
+        WHERE info.customer_name like '%${customerName}%' and info.customer_mgr like '%${customerMgr}%'
+        and statuss like '%${statuss}%' and info.customer_id=loss.customer_id
+
+    </select>
+    <select id="findAll" resultType="com.gdupt.entity.CustomerLoss">
+         select id,customer_id,last_order_time,pause_way,add_pause_way,loss_reason,loss_time,statuss
+        from customer_loss
+    </select>
+
+</mapper>
